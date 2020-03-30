@@ -901,7 +901,7 @@ endfunction()
 #===============================================================================
 # Setup Source Code And Tests
 #===============================================================================
-include_directories(include)
+include_directories(BEFORE include)
 add_subdirectory(include)
 add_subdirectory(src)
 
