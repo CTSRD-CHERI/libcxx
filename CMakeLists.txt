@@ -3,18 +3,6 @@
 #===============================================================================
 # Setup Project
 #===============================================================================
-cmake_minimum_required(VERSION 3.4.3)
-
-if(POLICY CMP0042)
-  cmake_policy(SET CMP0042 NEW) # Set MACOSX_RPATH=YES by default
-endif()
-if(POLICY CMP0022)
-  cmake_policy(SET CMP0022 NEW) # Required when interacting with LLVM and Clang
-endif()
-if(POLICY CMP0068)
-  cmake_policy(SET CMP0068 NEW)
-  set(CMAKE_BUILD_WITH_INSTALL_NAME_DIR ON)
-endif()
 
 # Add path for custom modules
 set(CMAKE_MODULE_PATH
@@ -24,6 +12,8 @@ set(CMAKE_MODULE_PATH
   )
 
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR OR LIBCXX_STANDALONE_BUILD)
+  cmake_minimum_required(VERSION 3.4.3)
+
   project(libcxx CXX C)
 
   set(PACKAGE_NAME libcxx)
@@ -43,6 +33,18 @@ if (LIBCXX_STANDALONE_BUILD)
     set(LLVM_INCLUDE_TESTS OFF)
   endif()
 endif()
+
+if(POLICY CMP0042)
+  cmake_policy(SET CMP0042 NEW) # Set MACOSX_RPATH=YES by default
+endif()
+if(POLICY CMP0022)
+  cmake_policy(SET CMP0022 NEW) # Required when interacting with LLVM and Clang
+endif()
+if(POLICY CMP0068)
+  cmake_policy(SET CMP0068 NEW)
+  set(CMAKE_BUILD_WITH_INSTALL_NAME_DIR ON)
+endif()
+
 
 # Require out of source build.
 include(MacroEnsureOutOfSourceBuild)
