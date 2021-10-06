@@ -10,6 +10,9 @@
 #ifndef _LIBCPP_CONFIG
 #define _LIBCPP_CONFIG
 
+// TODO: remove this horrible hack. We want LIBCXX_ENABLE_THREADS, but need more support for it
+#undef __STDCPP_THREADS__
+
 #if defined(_MSC_VER) && !defined(__clang__)
 #  if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
 #    define _LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER
